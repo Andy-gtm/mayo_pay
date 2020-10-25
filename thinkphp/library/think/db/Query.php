@@ -54,7 +54,7 @@ class Query
     // 回调事件
     private static $event = [];
     // 读取主库
-    private static $readMaster = [];
+    protected static $readMaster = [];
 
     /**
      * 构造函数
@@ -546,9 +546,9 @@ class Query
             $options = $this->getOptions();
             $subSql  = $this->options($options)->field('count(' . $field . ')')->bind($this->bind)->buildSql();
 
-            $count = $this->table([$subSql => '_group_count_'])->value('COUNT(*) AS tp_count', 0);
+            $count = $this->table([$subSql => '_group_count_'])->value('COUNT(*) AS tp_count', 0, true);
         } else {
-            $count = $this->aggregate('COUNT', $field);
+            $count = $this->aggregate('COUNT', $field, true);
         }
 
         return is_string($count) ? $count : (int) $count;
@@ -569,7 +569,7 @@ class Query
             list($distinct, $field) = explode(' ', $field);
         }
 
-        if (!preg_match('/^[\w\.\*]+$/', $field)) {
+        if (!preg_match('/^[\w\.\+\-\*]+$/', $field)) {
             throw new Exception('not support data:' . $field);
         }
 
