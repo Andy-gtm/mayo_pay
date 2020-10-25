@@ -32,8 +32,9 @@ class Index extends Base{
 
     /**
      * [indexPage 后台首页]
-     * @return [type] [description]
-     * @author [田建龙] [www.96dayu.com]
+     * @return string [description]
+     * @author
+     * @throws
      */
     public function indexPage(){
          //今日新增会员
@@ -147,7 +148,8 @@ class Index extends Base{
         //usdt总量
         //$address = Db::name('merchant_user_address')->column('address');
 
-        /*$model = new \app\common\model\Usdt();
+        /*
+        $model = new \app\common\model\Usdt();
 		$addressarray = $model->index('getAllAddress', $address = null, $money = null, $index=null, $count=null, $skip=null);
         $usdt = 0;
         foreach($addressarray['data'] as $k=>$v){
@@ -163,7 +165,8 @@ class Index extends Base{
 		$temp2 = $model->index('getbtcbalance', $v, $money = null, $index=null, $count=null, $skip=null);
         $this->assign('usdt', $usdt+$baseusdt['data']);
 		$baseusdt2 = $model->index('getBtcBalance', '1PnhPBJ6JiAFuw5HFSpjuugci7SJjo179U', $money = null, $index=null, $count=null, $skip=null);
-        $this->assign('btc', $temp2 ['data']);*/
+        $this->assign('btc', $temp2 ['data']);
+        */
 		$usdt = Db::name('coin_log')->where('coin_type', 0)->order('id desc')->limit(1)->value('balance');
         $this->assign('usdt', $usdt);
         $btc = Db::name('coin_log')->where('coin_type', 1)->order('id desc')->limit(1)->value('balance');

@@ -18,7 +18,9 @@
     "require": {
         "php": ">=5.4.0",
         "topthink/framework": "5.0.*",
-        "topthink/think-captcha": "1.*"
+        "topthink/think-captcha": "1.*",
+        "ext-json": "*",
+        "ext-curl": "*"
     },
     "extra": {
         "think-path": "thinkphp"

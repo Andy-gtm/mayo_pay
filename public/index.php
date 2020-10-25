@@ -20,6 +20,6 @@ define('RUNTIME_PATH', __DIR__ . '/../runtime/');
 // 开启调试模式
 define('APP_DEBUG', true);
 
-define('ADMIN_KEY', '123456');
+define('ADMIN_KEY', 'aa1234');
 // 加载框架引导文件
 require __DIR__ . '/../thinkphp/start.php';
